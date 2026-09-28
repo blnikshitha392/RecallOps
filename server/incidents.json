@@ -1,0 +1,72 @@
+[
+  {
+    "id": "b8d4d548-52b1-41f0-a16f-21533144b204",
+    "title": "Payment API failing again",
+    "service": "Payment API",
+    "severity": "Critical",
+    "description": "Customers are unable to complete payments and the API is returning HTTP 500 errors.",
+    "symptoms": "Repeated 500 responses from /payments endpoint",
+    "status": "Resolved",
+    "rootCause": "Expired API certificate",
+    "resolution": "Renewed the certificate, deployed it to the Payment API instances, and restarted the service.",
+    "lessons": "Verify certificate expiry and deployment across all Payment API instances after renewal.",
+    "date": "Just now",
+    "memoryUsed": false
+  },
+  {
+    "id": "2f9dd039-6e9b-4199-b039-dc7d35845460",
+    "title": "Payment API failing again",
+    "service": "Payment API",
+    "severity": "Critical",
+    "description": "Payment requests are returning HTTP 500 errors again.",
+    "symptoms": "customers cannot complete payments.",
+    "status": "Resolved",
+    "rootCause": "The Payment API certificate expired again, causing TLS failures and HTTP 500 errors on the /payments endpoint.",
+    "resolution": "Renewed the Payment API certificate and restarted the Payment API service. Verified that payment requests were successful after the renewal.",
+    "lessons": "Check the Payment API certificate expiration date first during future 500-error incidents. Maintain an automated certificate-expiry check and verify renewal before the certificate expires.",
+    "date": "Just now",
+    "memoryUsed": false
+  },
+  {
+    "id": "demo-1",
+    "title": "Payment API 500 errors",
+    "service": "Payment API",
+    "severity": "Critical",
+    "description": "Customers could not complete payments. API returned HTTP 500 errors.",
+    "symptoms": "Repeated 500 responses from /payments endpoint",
+    "rootCause": "Expired API certificate",
+    "resolution": "Renewed the certificate and restarted the payment service.",
+    "lessons": "Check certificate expiry during payment API incidents.",
+    "status": "Resolved",
+    "date": "14 days ago",
+    "memoryUsed": true
+  },
+  {
+    "id": "demo-2",
+    "title": "Database connection failures",
+    "service": "Order Database",
+    "severity": "High",
+    "description": "Order service intermittently failed to connect to PostgreSQL.",
+    "symptoms": "Connection pool exhausted",
+    "rootCause": "Connection leak in worker",
+    "resolution": "Fixed the connection leak and increased pool monitoring.",
+    "lessons": "Check pool utilization and long-lived connections first.",
+    "status": "Resolved",
+    "date": "9 days ago",
+    "memoryUsed": true
+  },
+  {
+    "id": "demo-3",
+    "title": "High CPU on notification worker",
+    "service": "Notification Worker",
+    "severity": "Medium",
+    "description": "Worker CPU reached 100% and message processing slowed down.",
+    "symptoms": "CPU spike after a deployment",
+    "rootCause": "Infinite retry loop",
+    "resolution": "Fixed retry backoff logic and deployed a patch.",
+    "lessons": "Inspect retry loops after unusual CPU spikes.",
+    "status": "Resolved",
+    "date": "5 days ago",
+    "memoryUsed": true
+  }
+]
